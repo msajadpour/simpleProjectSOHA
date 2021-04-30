@@ -1,0 +1,239 @@
+
+@font-face {
+  font-family: robot;
+  src: url(./assets/fonts/Roboto-Light.ttf);
+}*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: robot;
+}
+h2{
+  text-align: center;
+  padding-bottom: 80px;
+  font-style: normal;
+  font-weight: bold;
+  color: #08A7B3;
+  font-size: 48px;
+}
+.main{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient( #CBF762 , #06A9A0);
+}
+/* menu component styles */
+
+.menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  flex-direction: row-reverse;
+  background-color: #DDFE5A;
+  height: 50px;
+}
+
+.menu .humberger{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.menu .humberger p{
+  font-size: 12px;
+  text-align: center;
+  margin: 1px 0 0 0px;
+  font-weight: bold;
+  color: #06A9A0;
+}
+
+/* hover header conponet styles */
+.header{
+  display: none;
+}
+.header .mainNav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  list-style-type: none;
+  background-color: #06A9A0;
+  line-height: 70px;
+  animation: showHeader .7s;
+}
+
+.header ul li{
+  width: 10%;
+  position: relative;
+  text-align: center;
+}
+.header ul li a{
+  text-decoration: none;
+  color: #fff;
+  border-radius: 12px;
+  padding: 6px;
+}
+.header ul li a:hover{
+  background-color: #DEFF5A;
+  color: #06A9A0;
+
+}
+.header .down{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50% ,-50%);
+}
+.header .dropDown {
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  left: 50%;
+  width: 160px;
+  transform: translate(-50%, 0%);
+  display: none;
+  animation: showDrop .5s;
+  
+}
+.header  .dropDown ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.header  .dropDown li{
+  width: 100%;
+  line-height: 35px;
+  background-color: #06A9A0;
+  border: 1px solid #DEFF5A;
+}
+.header  .dropDown li a{
+  display: inline-block;
+  width: 100%;
+  border-radius: 0;
+}
+.header  .dropDown li a:hover{
+  font-size: 20px;
+}
+@keyframes showDrop {
+  from{
+    opacity: 0;
+    top: 110%;
+  }
+  to{
+    opacity: 1;
+    top: 100%;
+  }
+}
+@keyframes showHeader {
+  from{
+    transform: translate(0, -100%);
+  }
+  to{
+    transform: translate(0, 0);
+  }
+}
+.showDrop:hover  .dropDown {
+  display: block;
+}
+.parentHeader:hover  .header{
+  display: block !important;
+}
+/*----------------- select box component styles -----------------*/
+
+
+/*the container must be positioned relative:*/
+.center{
+  height: calc(75vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#select{
+  display: none;
+}
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  width: 40%;
+  transform: translate(-50% , 0);
+  font-weight: bold;
+  font-size: 18px;
+  color: #DEFF5A;
+  background: #06A9A0;
+  border: 3px solid #DEFF5A;
+  border-radius: 40px;
+  z-index: 1;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  padding: 8px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  left: 50%;
+  right: 50%;
+  z-index: 0;
+  width: 40%;
+  transform: translate(-50%, 0);
+  height: 300px;
+  overflow-y: scroll;
+  padding-top: 43px;
+  border-radius: 20px;
+}
+.select-items >div{
+  height: 50px;
+    line-height: 36px;
+    color: #DEFF5A;
+    font-size: 18px;
+    font-weight: bold;
+    background: #06A9A0;
+    border: 1px solid #DEFF5A;
+}
+.select-items::-webkit-scrollbar{
+  display: none;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
